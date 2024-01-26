@@ -1,9 +1,11 @@
-<h1>Create a Todo</h1>
-<form method="post" action={{$action}}>
-    @csrf
+<x-layout>
+    <h1>Create a Todo</h1>
+    <form method="post" action={{$action}}>
+        @csrf
 
-    <label for="desc"></label>
-    <input type="text" name="desc" id="desc">
-    <button type="submit">Create</button>
+        <label for="desc"></label>
+        <input type="text" name="desc" id="desc">
+        <button type="submit">Create</button>
 
-</form>
+    </form>
+</x-layout>
