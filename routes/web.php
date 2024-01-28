@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Todo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $todos = Todo::all();
-    return $todos;
-
-    return view('welcome');
-});
+Route::redirect("/", "/todo");
 
 Route::resource("/todo", \App\Http\Controllers\TodoController::class);
+Route::resource("/category", \App\Http\Controllers\CategoryController::class);

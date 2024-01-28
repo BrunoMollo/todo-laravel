@@ -11,8 +11,11 @@
 
 <body class="antialiased">
     <nav>
-        <a href="/todo">List</a>
-        <a href="/todo/create">Create</a>
+        <a href="/todo">List Todo</a>
+        <a href="/todo/create">Create Todo</a>
+
+        <a href="/category">List Category</a>
+        <a href="/category/create">Create Category</a>
     </nav>
     <main>
 
