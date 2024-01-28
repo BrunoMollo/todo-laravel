@@ -1,3 +1,15 @@
+<script>
+    function open() {
+        const dialog = document.querySelector("dialog")
+        setTimeout(() => dialog.showModal(), 5)
+    }
+
+    function close() {
+        const dialog = document.querySelector("dialog")
+        setTimeout(() => dialog.close(), 5)
+    }
+</script>
+
 <x-layout>
     @fragment('category-list')
     <ul id="category-list">
@@ -10,16 +22,9 @@
     </ul>
     @endfragment
     <dialog>
-        <button type="button" onclick="dialog.close()">X</button>
+        <button type="button" onclick="close()">X</button>
         <div id="edit-category">
             <span>Loading</span>
         </div>
     </dialog>
 </x-layout>
-
-<script>
-    const dialog = document.querySelector("dialog")
-    function open() {
-        setTimeout(() => dialog.showModal(), 5)
-    }
-</script>

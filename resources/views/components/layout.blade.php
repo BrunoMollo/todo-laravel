@@ -12,7 +12,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body class="antialiased">
+<body class="antialiased" hx-boost="true">
     <nav>
         <a href="/todo">List Todo</a>
         <a href="/todo/create">Create Todo</a>
@@ -28,6 +28,12 @@
         htmx.config.globalViewTransitions = true
         htmx.config.defaultSettleDelay = 0
     </script>
+    <style>
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation-duration: 0.15s;
+        }
+    </style>
 </body>
 
 </html>
