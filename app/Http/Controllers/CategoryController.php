@@ -49,7 +49,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $action = action([CategoryController::class, "update"], ["category" => $category]);
+        return view("category.edit", ["action" => $action, "category" => $category]);
     }
 
     /**
@@ -57,7 +58,12 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $validated = $request->validated();
+        $category->name = $request->name;
+        $category->save();
+
+        $category_list = Category::all();
+        return view("category.index", ["category_list" => $category_list])->fragment("category-list");
     }
 
     /**
