@@ -4,6 +4,7 @@
         @csrf
 
         <label for="name"></label>
+        @error('name')<span>Is required</span>@enderror
         <input type="text" name="name" id="name">
         <button type="submit">Create</button>
 

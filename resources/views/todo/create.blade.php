@@ -2,6 +2,7 @@
     <h1>Create a Todo</h1>
     <form method="post" action={{$action}}>
         @csrf
+        @error('desc')<span>Is required</span>@enderror
         <label for="desc"></label>
         <input type="text" name="desc" id="desc">
         <button type="submit">Create</button>
