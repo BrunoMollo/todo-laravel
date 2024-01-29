@@ -21,6 +21,9 @@ class StoreTodoRequest extends FormRequest
      */
     public function rules(): array
     {
-        return ["desc" => "required|max:256"];
+        return [
+            "desc" => "required|max:256",
+            "category_id" => "required|numeric"
+        ];
     }
 }

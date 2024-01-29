@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTodoRequest;
 use App\Http\Requests\UpdateTodoRequest;
+use App\Models\Category;
 use App\Models\Todo;
 
 class TodoController extends Controller
@@ -22,8 +23,9 @@ class TodoController extends Controller
      */
     public function create()
     {
+        $all_categories = Category::all();
         $action = action([TodoController::class, "store"]);
-        return view("todo/create", ['action' => $action]);
+        return view("todo/create", ['action' => $action, "all_categories" => $all_categories]);
     }
 
     /**
@@ -32,7 +34,10 @@ class TodoController extends Controller
     public function store(StoreTodoRequest $request)
     {
         $validated = $request->validated();
-        Todo::create(["desc" => $validated["desc"]]);
+        Todo::create([
+            "desc" => $validated["desc"],
+            "category_id" => $validated["category_id"]
+        ]);
         return redirect()->action([TodoController::class, "index"]);
     }
 

@@ -1,7 +1,8 @@
 <x-layout>
+    <a href="todo/create">Create todo</a>
     <ul>
         @foreach($todos_list as $todo)
-        <li>{{$todo->desc}}</li>
+        <li>{{$todo->desc}} ({{$todo->category->name}})</li>
         @endforeach
     </ul>
 </x-layout>
