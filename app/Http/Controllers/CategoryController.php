@@ -14,7 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         $category_list = Category::all();
-        return view("category.index", ["category_list" => $category_list]);
+        return view("category.index_category", ["category_list" => $category_list]);
     }
 
     /**
@@ -23,7 +23,7 @@ class CategoryController extends Controller
     public function create()
     {
         $action = action([CategoryController::class, "store"]);
-        return view("category.create", ["action" => $action]);
+        return view("category.create_category", ["action" => $action]);
     }
 
     /**
@@ -50,7 +50,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $action = action([CategoryController::class, "update"], ["category" => $category]);
-        return view("category.edit", ["action" => $action, "category" => $category]);
+        return view("category.edit_category", ["action" => $action, "category" => $category]);
     }
 
     /**
@@ -59,11 +59,9 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $validated = $request->validated();
-        $category->name = $request->name;
+        $category->name = $validated["name"];
         $category->save();
-
-        $category_list = Category::all();
-        return view("category.index", ["category_list" => $category_list])->fragment("category-list");
+        return redirect()->action([CategoryController::class, "index"]);
     }
 
     /**
