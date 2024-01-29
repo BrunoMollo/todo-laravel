@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect("/", "/todo");
+Auth::routes();
+Route::redirect("/", "/home");
+Route::middleware(["auth"])->group(function () {
+    Route::resource("/todo", \App\Http\Controllers\TodoController::class);
+    Route::resource("/category", \App\Http\Controllers\CategoryController::class);
+});
 
-Route::resource("/todo", \App\Http\Controllers\TodoController::class);
-Route::resource("/category", \App\Http\Controllers\CategoryController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

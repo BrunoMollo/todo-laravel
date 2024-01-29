@@ -1,4 +1,6 @@
-<x-layout>
+@extends('layouts.app')
+
+@section('content')
     <div id="edit-container">
         <h1>Edit a Category</h1>
         <form action={{$action}} method="post">
@@ -10,4 +12,4 @@
             <button type="submit">Edit</button>
         </form>
     </div>
-</x-layout>
+@endsection
